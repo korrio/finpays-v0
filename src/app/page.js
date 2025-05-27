@@ -25,6 +25,7 @@ import {
 } from 'lucide-react';
 
 import ReferralSystem from './ReferralSystem';
+import AdminReferralDashboard from './AdminReferralDashboard';
 
 const FinpaysPrototype = () => {
   const [currentPage, setCurrentPage] = useState('landing');
@@ -80,8 +81,8 @@ const FinpaysPrototype = () => {
     dispute: <DisputePage setCurrentPage={setCurrentPage} deal={deals[0]} />,
     wallet: <WalletPage setCurrentPage={setCurrentPage} balance={walletBalance} />,
     admin: <AdminDashboard setCurrentPage={setCurrentPage} deals={deals} />,
-    referral: <ReferralSystem setCurrentPage={setCurrentPage} />
-
+    referral: <ReferralSystem setCurrentPage={setCurrentPage} />,
+    admin: <AdminReferralDashboard setCurrentPage={setCurrentPage} />
   };
 
   // return (
@@ -164,6 +165,16 @@ const LandingPage = ({ setCurrentPage, setUserType }) => (
           >
             <Users className="inline mr-2" />
             สำหรับผู้ขาย
+          </button>
+          <button 
+            onClick={() => {
+              setUserType('admin');
+              setCurrentPage('admin');
+            }}
+            className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all transform hover:scale-105"
+          >
+            <Shield className="inline mr-2" />
+            สำหรับแอดมิน
           </button>
         </div>
       </div>
